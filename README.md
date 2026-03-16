@@ -82,7 +82,7 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `pnpm astro -- --help` | Get help using the Astro CLI                     |
 
-## 💖 Support
+## ❤️ Like this theme?
 
-If you enjoy using this theme and want to support its development, you can buy me a coffee:
-[![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/mhsh)
+If you found this theme useful, check out more free and premium themes at  
+👉 https://mhsh.themes.in

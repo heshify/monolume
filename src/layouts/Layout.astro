@@ -1,15 +1,15 @@
 ---
-import Head from "@components/Head.astro";
-import Header from "@components/Header.astro";
+import Head from "@/components/Head.astro";
+import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import { SITE } from "@consts";
+import { SITE } from "@/consts";
 
-import "@/styles/global.css";
+import "../styles/global.css";
 
 type Props = {
-  title: string;
-  description: string;
-  image?: string;
+    title: string;
+    description: string;
+    image?: string;
 };
 
 const { title, description } = Astro.props;
@@ -17,21 +17,21 @@ const { title, description } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-  <Head title={`${title} | ${SITE.TITLE}`} description={description} />
-  <body>
-    <Header />
-    <div class="min-h-screen w-full relative">
-      <div
-        class="fixed inset-0 -z-50 bg-background"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.10) 1px, transparent 0)",
-          backgroundSize: "25px 25px",
-        }}
-      >
-      </div>
-      <slot />
-    </div>
-    <Footer />
-  </body>
+    <Head title={`${title} | ${SITE.TITLE}`} description={description} />
+    <body>
+        <Header />
+        <div class="min-h-screen w-full relative">
+            <div
+                class="fixed inset-0 -z-50 bg-background"
+                style={{
+                    backgroundImage:
+                        "radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.10) 1px, transparent 0)",
+                    backgroundSize: "25px 25px",
+                }}
+            >
+            </div>
+            <slot />
+        </div>
+        <Footer />
+    </body>
 </html>

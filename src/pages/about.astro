@@ -1,11 +1,11 @@
 ---
-import AboutMe from "@components/About.astro";
-import Layout from "@layouts/Layout.astro";
-import { SITE } from "@consts";
+import AboutMe from "@/components/About.astro";
+import Layout from "@/layouts/Layout.astro";
+import { SITE } from "@/consts";
 ---
 
 <Layout title={SITE.TITLE} description={SITE.DESCRIPTION}>
-  <section class="pt-18">
-    <AboutMe />
-  </section>
+    <section class="pt-18">
+        <AboutMe />
+    </section>
 </Layout>

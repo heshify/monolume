@@ -6,7 +6,7 @@
     "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
-      "@*": ["./src/*"]
+      "@/*": ["src/*"]
     }
   }
 }

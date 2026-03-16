@@ -1,16 +1,16 @@
 ---
-import Layout from "@layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
 import { getCollection, render, type CollectionEntry } from "astro:content";
-import FormattedDate from "@components/FormattedDate.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
 
 export async function getStaticPaths() {
-  const posts = (await getCollection("blog"))
-    .filter((post) => !post.data.draft)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-  return posts.map((post) => ({
-    params: { id: post.id },
-    props: post,
-  }));
+    const posts = (await getCollection("blog"))
+        .filter((post) => !post.data.draft)
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    return posts.map((post) => ({
+        params: { id: post.id },
+        props: post,
+    }));
 }
 type Props = CollectionEntry<"blog">;
 
@@ -20,60 +20,60 @@ const { Content } = await render(post);
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
-  <div class="container mx-auto space-y-8 pt-18 px-6">
-    <button
-      class="flex gap-2 items-center text-secondary hover:text-primary cursor-pointer pl-2 my-6"
-      title="back"
-      id="back-button"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="28"
-        height="28"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-move-left-icon lucide-move-left"
-        ><path d="M6 8L2 12L6 16"></path><path d="M2 12H22"></path></svg
-      >
-      <span>Back</span>
-    </button>
-    <div
-      class="flex justify-between md:items-center pb-4 border-b border-dashed border-secondary gap-4 flex-col md:flex-row"
-    >
-      <div class="space-y-4">
-        <h1 class="heading text-3xl md:text-5xl uppercase">
-          {post.data.title}
-        </h1>
-        <p>{post.data.description}</p>
-        <p class="text-secondary">
-          <FormattedDate date={post.data.date} />
-        </p>
-      </div>
-    </div>
-    {
-      post.data.image && (
-        <div class="w-full lg:h-[70vh] aspect-[610/400] overflow-hidden rounded-2xl">
-          <img
-            src={post.data.image?.url}
-            alt={post.data.image?.alt}
-            class="w-full h-full object-contain"
-          />
+    <div class="container mx-auto space-y-8 pt-18 px-6">
+        <button
+            class="flex gap-2 items-center text-secondary hover:text-primary cursor-pointer pl-2 my-6"
+            title="back"
+            id="back-button"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-move-left-icon lucide-move-left"
+                ><path d="M6 8L2 12L6 16"></path><path d="M2 12H22"></path></svg
+            >
+            <span>Back</span>
+        </button>
+        <div
+            class="flex justify-between md:items-center pb-4 border-b border-dashed border-secondary gap-4 flex-col md:flex-row"
+        >
+            <div class="space-y-4">
+                <h1 class="heading text-3xl md:text-5xl uppercase">
+                    {post.data.title}
+                </h1>
+                <p>{post.data.description}</p>
+                <p class="text-secondary">
+                    <FormattedDate date={post.data.date} />
+                </p>
+            </div>
         </div>
-      )
-    }
+        {
+            post.data.image && (
+                <div class="w-full lg:h-[70vh] aspect-[610/400] overflow-hidden rounded-2xl">
+                    <img
+                        src={post.data.image?.url}
+                        alt={post.data.image?.alt}
+                        class="w-full h-full object-contain"
+                    />
+                </div>
+            )
+        }
 
-    <article class="px-3 flex-2 mx-auto mb-18">
-      <Content />
-    </article>
-  </div>
+        <article class="px-3 flex-2 mx-auto mb-18">
+            <Content />
+        </article>
+    </div>
 
-  <script is:inline>
-    document.getElementById("back-button").addEventListener("click", () => {
-      window.history.back();
-    });
-  </script>
+    <script is:inline>
+        document.getElementById("back-button").addEventListener("click", () => {
+            window.history.back();
+        });
+    </script>
 </Layout>

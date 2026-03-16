@@ -1,19 +1,19 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import About from "@components/About.astro";
-import Projects from "@components/Projects.astro";
-import Posts from "@components/Posts.astro";
-import Contact from "@components/Contact.astro";
+import Layout from "@/layouts/Layout.astro";
+import About from "@/components/About.astro";
+import Projects from "@/components/Projects.astro";
+import Posts from "@/components/Posts.astro";
+import Contact from "@/components/Contact.astro";
 
-import Hero from "@components/Hero.astro";
+import Hero from "@/components/Hero.astro";
 
-import { HOME } from "@consts";
+import { HOME } from "@/consts";
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
-  <Hero />
-  <About />
-  <Projects />
-  <Posts />
-  <Contact />
+    <Hero />
+    <About />
+    <Projects />
+    <Posts />
+    <Contact />
 </Layout>

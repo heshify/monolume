@@ -1,119 +1,119 @@
 ---
-import { SITE } from "@consts";
+import { SITE } from "@/consts";
 
 const links = [
-  { name: "Home", href: "/", target: "_self" },
-  { name: "About", href: "/about", target: "_self" },
-  { name: "Work", href: "/projects", target: "_self" },
-  { name: "Blog", href: "/blog", target: "_self" },
-  { name: "Contact", href: "/contact", target: "_self" },
+    { name: "Home", href: "/", target: "_self" },
+    { name: "About", href: "/about", target: "_self" },
+    { name: "Work", href: "/projects", target: "_self" },
+    { name: "Blog", href: "/blog", target: "_self" },
+    { name: "Contact", href: "/contact", target: "_self" },
 ];
 ---
 
 <header class="fixed top-0 w-full z-50">
-  <div class="container mx-auto flex items-center justify-between p-6">
-    <a href="/" class="font-bold font-plex text-4xl"
-      >{SITE.TITLE.toUpperCase().charAt(0)}.</a
+    <div class="container mx-auto flex items-center justify-between p-6">
+        <a href="/" class="font-bold font-plex text-4xl"
+            >{SITE.TITLE.toUpperCase().charAt(0)}.</a
+        >
+        <nav class="space-x-3 text-secondary hidden md:block">
+            {
+                links.map((link) => (
+                    <a
+                        href={link.href}
+                        class="hover:border-b-2 hover:border-dashed hover:border-secondary pb-0.5"
+                    >
+                        {link.name}
+                    </a>
+                ))
+            }
+        </nav>
+        <button
+            id="menu-toggle"
+            class="hamburger focus:outline-none flex md:hidden"
+            aria-label="Toggle navigation"
+        >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+    </div>
+    <div
+        id="menu-mobile"
+        class="hidden md:hidden space-x-3 text-secondary bg-background backdrop-blur-2xl w-screen p-4"
     >
-    <nav class="space-x-3 text-secondary hidden md:block">
-      {
-        links.map((link) => (
-          <a
-            href={link.href}
-            class="hover:border-b-2 hover:border-dashed hover:border-secondary pb-0.5"
-          >
-            {link.name}
-          </a>
-        ))
-      }
-    </nav>
-    <button
-      id="menu-toggle"
-      class="hamburger focus:outline-none flex md:hidden"
-      aria-label="Toggle navigation"
-    >
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
-  </div>
-  <div
-    id="menu-mobile"
-    class="hidden md:hidden space-x-3 text-secondary bg-background backdrop-blur-2xl w-screen p-4"
-  >
-    <nav class="flex flex-col gap-4 text-2xl">
-      {
-        links.map((link) => (
-          <a
-            href={link.href}
-            class="hover:border-b-2 hover:border-dashed hover:border-secondary pb-0.5"
-          >
-            {link.name}
-          </a>
-        ))
-      }
-    </nav>
-  </div>
+        <nav class="flex flex-col gap-4 text-2xl">
+            {
+                links.map((link) => (
+                    <a
+                        href={link.href}
+                        class="hover:border-b-2 hover:border-dashed hover:border-secondary pb-0.5"
+                    >
+                        {link.name}
+                    </a>
+                ))
+            }
+        </nav>
+    </div>
 </header>
 
 <style>
-  .hamburger {
-    gap: 5px;
-    cursor: pointer;
-    position: relative;
-    width: 24px;
-    height: 21px;
-    padding: 0;
-    border: 0;
-    background: transparent;
-  }
+    .hamburger {
+        gap: 5px;
+        cursor: pointer;
+        position: relative;
+        width: 24px;
+        height: 21px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+    }
 
-  .hamburger-line {
-    width: 24px;
-    height: 3px;
-    background-color: var(--color-secondary, #000000);
-    transition: all 0.3s ease;
-    position: absolute;
-    left: 0;
-  }
+    .hamburger-line {
+        width: 24px;
+        height: 3px;
+        background-color: var(--color-secondary, #000000);
+        transition: all 0.3s ease;
+        position: absolute;
+        left: 0;
+    }
 
-  .hamburger-line:nth-child(1) {
-    top: 0;
-  }
+    .hamburger-line:nth-child(1) {
+        top: 0;
+    }
 
-  .hamburger-line:nth-child(2) {
-    top: 9px;
-  }
+    .hamburger-line:nth-child(2) {
+        top: 9px;
+    }
 
-  .hamburger-line:nth-child(3) {
-    top: 18px;
-  }
+    .hamburger-line:nth-child(3) {
+        top: 18px;
+    }
 
-  .hamburger.active .hamburger-line:nth-child(1) {
-    transform: rotate(45deg);
-    top: 9px;
-  }
+    .hamburger.active .hamburger-line:nth-child(1) {
+        transform: rotate(45deg);
+        top: 9px;
+    }
 
-  .hamburger.active .hamburger-line:nth-child(2) {
-    display: none;
-    opacity: 0;
-  }
+    .hamburger.active .hamburger-line:nth-child(2) {
+        display: none;
+        opacity: 0;
+    }
 
-  .hamburger.active .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg);
-    top: 9px;
-  }
+    .hamburger.active .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 9px;
+    }
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const menuMobile = document.getElementById("menu-mobile");
-    const toggle = document.getElementById("menu-toggle");
-    toggle?.addEventListener("click", () => {
-      menuMobile?.classList.toggle("hidden");
-      toggle.classList.toggle("active");
-      const expanded = toggle.classList.contains("active");
-      toggle.setAttribute("aria-expanded", String(expanded));
+    document.addEventListener("DOMContentLoaded", () => {
+        const menuMobile = document.getElementById("menu-mobile");
+        const toggle = document.getElementById("menu-toggle");
+        toggle?.addEventListener("click", () => {
+            menuMobile?.classList.toggle("hidden");
+            toggle.classList.toggle("active");
+            const expanded = toggle.classList.contains("active");
+            toggle.setAttribute("aria-expanded", String(expanded));
+        });
     });
-  });
 </script>

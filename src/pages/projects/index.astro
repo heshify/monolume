@@ -1,18 +1,18 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Card from "@components/Card.astro";
+import Layout from "@/layouts/Layout.astro";
+import Card from "@/components/Card.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
-import { PROJECTS } from "@consts";
+import { PROJECTS } from "@/consts";
 
 const allProjects: CollectionEntry<"projects">[] =
-  await getCollection("projects");
+    await getCollection("projects");
 ---
 
 <Layout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
-  <section id="Projects" class="container mx-auto px-6 pt-18">
-    <h2 class="heading text-5xl md:text-9xl uppercase mr-4 md:mr-8 my-8">
-      work
-    </h2>
-    {allProjects.map((project) => <Card entry={project} />)}
-  </section>
+    <section id="Projects" class="container mx-auto px-6 pt-18">
+        <h2 class="heading text-5xl md:text-9xl uppercase mr-4 md:mr-8 my-8">
+            work
+        </h2>
+        {allProjects.map((project) => <Card entry={project} />)}
+    </section>
 </Layout>

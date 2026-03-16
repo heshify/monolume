@@ -1,10 +1,11 @@
 ---
 import "@/styles/global.css";
+import { Font } from "astro:assets";
 
 interface Props {
-  title: string;
-  description: string;
-  image?: string;
+    title: string;
+    description: string;
+    image?: string;
 }
 
 const { title, description, image = "/placeholder.png" } = Astro.props;
@@ -20,10 +21,6 @@ const { title, description, image = "/placeholder.png" } = Astro.props;
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
-<!-- google fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=IBM+Plex+Mono:wght@700&display=swap"
-  rel="stylesheet"
-/>
+<!-- fonts -->
+<Font cssVariable="--font-plex" preload />
+<Font cssVariable="--font-geist" preload />

@@ -29,7 +29,24 @@ import { SOCIALS } from "@/consts";
             </div>
         </div>
 
-        <form class="space-y-6">
+        <!--
+            DEVELOPER NOTE — FABFORM.IO INTEGRATION
+            FabForm.io is a backend service for static HTML forms. Astro pages
+            are static by default, so forms cannot submit anywhere unless a backend
+            endpoint is provided. FabForm gives you a unique form URL that accepts
+            submissions and stores them in your dashboard.
+
+            HOW TO USE FABFORM
+            1. Create a form endpoint at https://fabform.io
+            2. Copy your unique form URL (example: https://fabform.io/f/your-form-id)
+            3. Paste that URL into the <form action="..."> attribute below
+            4. Ensure each input has a valid `name` attribute
+        -->
+        <form 
+            action="https://fabform.io/f/REPLACE_WITH_YOUR_FORM_ID"
+            method="POST"
+            class="space-y-6"
+        >
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div class="relative">
                     <input
@@ -73,7 +90,8 @@ import { SOCIALS } from "@/consts";
                     rows="6"
                     class="peer border border-secondary border-dashed p-4 text-xl w-full focus:outline-none rounded-3xl placeholder-transparent resize-none"
                     placeholder="Message"
-                    required></textarea>
+                    required
+                ></textarea>
                 <label
                     for="message"
                     class="absolute left-4 top-4 text-xl text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:text-xl peer-focus:-top-2 peer-focus:text-sm peer-focus:text-secondary transition-all peer-focus:px-2 peer-focus:bg-background"
@@ -91,3 +109,4 @@ import { SOCIALS } from "@/consts";
         </form>
     </div>
 </section>
+

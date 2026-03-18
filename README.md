@@ -85,4 +85,4 @@ All commands are run from the root of the project, from a terminal:
 ## ❤️ Like this theme?
 
 If you found this theme useful, check out more free and premium themes at  
-👉 https://mhsh.themes.in
+👉 https://themes.mhsh.in
